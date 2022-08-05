@@ -1,4 +1,5 @@
 # Example of CASL integration in expressjs app
+Modify some codes to run the example locally
 
 ## DEPRECATED
 
@@ -37,15 +38,18 @@ Also you need mongodb database up and running. Application will connect to `mong
 
 
 ## Instruction to login
+Note: change port to 3000 in this example
 
 1. Create new user
 
 ```
-POST http://localhost:3030/users
+POST http://localhost:3000/users
+content-type: application/json
+
 {
   "user": {
-    "email": "casl@medium.com",
-    "password": "password"
+    "email": "casl@admin.com",
+    "password": "123456"
   }
 }
 ```
@@ -53,19 +57,27 @@ POST http://localhost:3030/users
 2. Create new session
 
 ```
-POST http://localhost:3030/session
+POST http://localhost:3000/session
+content-type: application/json
+
 {
   "session": {
-    "email": "casl@medium.com",
-    "password": "password"
+    "email": "casl@admin.com",
+    "password": "123456"
   }
 }
 
+Response:
 201 Created
 { "accessToken": "...." }
 ```
 
 3. Put access token in `Authorization` header for all future requests
+Like for posts:
+```
+GET http://localhost:3000/posts
+Authorization: xxx
+```
 
 
 ## Routes
