@@ -22,8 +22,12 @@ module.exports = function createApp() {
   });
 
   app.use(errorHandler);
+  app.use('/hi', (req, res) => {
+    res.send('hello world');
+  });
 
+  const connectLocal = 'mongodb://localhost:27017/blog';
   mongoose.Promise = global.Promise;
-  return mongoose.connect('mongodb://localhost:27017/blog')
-    .then(() => app);
+  return mongoose.connect(connectLocal)
+    .then(() => app).catch((err) => console.log(err));
 };

@@ -1,0 +1,36 @@
+GET http://localhost:3000/hi
+###
+
+GET http://localhost:3000/users/62ed30dc98c827cdf5cffe6d
+content-type: application/json
+Authorization: token eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjYyZWQzMGRjOThjODI3Y2RmNWNmZmU2ZCIsImlhdCI6MTY1OTcxMTcyMywiYXVkIjoiY2FzbC5pbyIsImlzcyI6IkNBU0wuRXhwcmVzcyJ9.jpk0LAKERmb1EylccW9M_QlQLnsnImc3kQPJNw8rIrU
+
+
+###
+
+POST http://localhost:3000/users
+content-type: application/json
+
+{
+  "user": {
+    "email": "casl@admin.com",
+    "password": "123456"
+  }
+   
+}
+
+###
+POST http://localhost:3000/session
+content-type: application/json
+
+{
+  "session": {
+    "email": "casl@admin.com",
+    "password": "123456"
+  }
+  
+}
+
+###
+GET http://localhost:3000/posts
+Authorization: eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjYyZWQzMGRjOThjODI3Y2RmNWNmZmU2ZCIsImlhdCI6MTY1OTcxMjI2NSwiYXVkIjoiY2FzbC5pbyIsImlzcyI6IkNBU0wuRXhwcmVzcyJ9.dMRNmda1k5TevOptX6TGQfY5l2D5t_4WXnPtvfRjyg0

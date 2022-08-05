@@ -27,8 +27,10 @@ async function update(req, res) {
 }
 
 async function create(req, res) {
-  const user = new User(req.body.user);
+  console.log(req.body.user);
 
+  const user = new User(req.body.user);
+  console.log(user);
   req.ability.throwUnlessCan('create', user);
   await user.save();
 
