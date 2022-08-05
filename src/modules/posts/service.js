@@ -2,7 +2,6 @@ const { NotFound } = require('http-errors');
 const Post = require('./model')();
 
 async function findAll(req, res) {
-  console.log(req.body)
   const posts = await Post.accessibleBy(req.ability);
   res.send({ posts });
 }

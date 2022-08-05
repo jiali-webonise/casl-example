@@ -16,7 +16,6 @@ content-type: application/json
     "email": "casl@admin.com",
     "password": "123456"
   }
-   
 }
 
 ###
@@ -28,9 +27,90 @@ content-type: application/json
     "email": "casl@admin.com",
     "password": "123456"
   }
-  
 }
 
 ###
 GET http://localhost:3000/posts
+Authorization: eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjYyZWQzMGRjOThjODI3Y2RmNWNmZmU2ZCIsImlhdCI6MTY1OTcxMjI2NSwiYXVkIjoiY2FzbC5pbyIsImlzcyI6IkNBU0wuRXhwcmVzcyJ9.dMRNmda1k5TevOptX6TGQfY5l2D5t_4WXnPtvfRjyg0
+
+###
+POST http://localhost:3000/posts
+content-type: application/json
+Authorization: eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjYyZWQzMGRjOThjODI3Y2RmNWNmZmU2ZCIsImlhdCI6MTY1OTcxMjI2NSwiYXVkIjoiY2FzbC5pbyIsImlzcyI6IkNBU0wuRXhwcmVzcyJ9.dMRNmda1k5TevOptX6TGQfY5l2D5t_4WXnPtvfRjyg0
+
+{
+  "post": {
+    "title":"Post test",
+    "text":"Test test"
+  }
+}
+
+
+###
+GET http://localhost:3000/posts/62ed5f3ec1ad0addc39551d2
+Authorization: eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjYyZWQzMGRjOThjODI3Y2RmNWNmZmU2ZCIsImlhdCI6MTY1OTcxMjI2NSwiYXVkIjoiY2FzbC5pbyIsImlzcyI6IkNBU0wuRXhwcmVzcyJ9.dMRNmda1k5TevOptX6TGQfY5l2D5t_4WXnPtvfRjyg0
+
+
+### update user owned post
+PATCH http://localhost:3000/posts/62ed5f3ec1ad0addc39551d2
+content-type: application/json
+Authorization: eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjYyZWQzMGRjOThjODI3Y2RmNWNmZmU2ZCIsImlhdCI6MTY1OTcxMjI2NSwiYXVkIjoiY2FzbC5pbyIsImlzcyI6IkNBU0wuRXhwcmVzcyJ9.dMRNmda1k5TevOptX6TGQfY5l2D5t_4WXnPtvfRjyg0
+
+{
+  "post": {
+    "title":"Post test 02",
+    "text":"Test test"
+  }
+}
+
+### update other user owned post
+PATCH http://localhost:3000/posts/597649a88679237e6f411ae6
+content-type: application/json
+Authorization: eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjYyZWQzMGRjOThjODI3Y2RmNWNmZmU2ZCIsImlhdCI6MTY1OTcxMjI2NSwiYXVkIjoiY2FzbC5pbyIsImlzcyI6IkNBU0wuRXhwcmVzcyJ9.dMRNmda1k5TevOptX6TGQfY5l2D5t_4WXnPtvfRjyg0
+
+{
+  "post": {
+    "title":"Update invalid post",
+    "text":"Test test"
+  }
+}
+
+### get comment of post by post id
+GET http://localhost:3000/posts/59761ba80203fb638e9bd85c/comments
+Authorization: eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjYyZWQzMGRjOThjODI3Y2RmNWNmZmU2ZCIsImlhdCI6MTY1OTcxMjI2NSwiYXVkIjoiY2FzbC5pbyIsImlzcyI6IkNBU0wuRXhwcmVzcyJ9.dMRNmda1k5TevOptX6TGQfY5l2D5t_4WXnPtvfRjyg0
+
+
+### get comments
+GET http://localhost:3000/posts/62ed5f3ec1ad0addc39551d2/comments
+Authorization: eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjYyZWQzMGRjOThjODI3Y2RmNWNmZmU2ZCIsImlhdCI6MTY1OTcxMjI2NSwiYXVkIjoiY2FzbC5pbyIsImlzcyI6IkNBU0wuRXhwcmVzcyJ9.dMRNmda1k5TevOptX6TGQfY5l2D5t_4WXnPtvfRjyg0
+
+### post comment for user owned post
+
+POST http://localhost:3000/posts/62ed5f3ec1ad0addc39551d2/comments
+content-type: application/json
+Authorization: eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjYyZWQzMGRjOThjODI3Y2RmNWNmZmU2ZCIsImlhdCI6MTY1OTcxMjI2NSwiYXVkIjoiY2FzbC5pbyIsImlzcyI6IkNBU0wuRXhwcmVzcyJ9.dMRNmda1k5TevOptX6TGQfY5l2D5t_4WXnPtvfRjyg0
+
+{
+  "comment": {
+    "text":"Test test comment"
+  }
+}
+
+### update comment of post by post id and comment id
+PATCH http://localhost:3000/posts/62ed5f3ec1ad0addc39551d2/comments/62ed64c8f44422df4c4ce0b6
+content-type: application/json
+Authorization: eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjYyZWQzMGRjOThjODI3Y2RmNWNmZmU2ZCIsImlhdCI6MTY1OTcxMjI2NSwiYXVkIjoiY2FzbC5pbyIsImlzcyI6IkNBU0wuRXhwcmVzcyJ9.dMRNmda1k5TevOptX6TGQfY5l2D5t_4WXnPtvfRjyg0
+
+{
+  "comment": {
+    "text":"Update test comment"
+  }
+}
+
+### delete post comment created by other users
+DELETE http://localhost:3000/posts/59761ba80203fb638e9bd85c/comments/59763c7f6882927829c9265e
+Authorization: eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjYyZWQzMGRjOThjODI3Y2RmNWNmZmU2ZCIsImlhdCI6MTY1OTcxMjI2NSwiYXVkIjoiY2FzbC5pbyIsImlzcyI6IkNBU0wuRXhwcmVzcyJ9.dMRNmda1k5TevOptX6TGQfY5l2D5t_4WXnPtvfRjyg0
+
+### delete post comment created by creator user
+DELETE http://localhost:3000/posts/62ed5f3ec1ad0addc39551d2/comments/62ed64bcf44422df4c4ce0b5
 Authorization: eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjYyZWQzMGRjOThjODI3Y2RmNWNmZmU2ZCIsImlhdCI6MTY1OTcxMjI2NSwiYXVkIjoiY2FzbC5pbyIsImlzcyI6IkNBU0wuRXhwcmVzcyJ9.dMRNmda1k5TevOptX6TGQfY5l2D5t_4WXnPtvfRjyg0
